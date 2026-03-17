@@ -33,6 +33,8 @@ public class App {
     static long operacoes;
     static double nanoToMilli = 1.0/1_000_000;
 
+// system.nanotime
+
     /**
      * Código de teste 1. Este método...
      * @param vetor Vetor com dados para teste.
