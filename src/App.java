@@ -33,8 +33,6 @@ public class App {
     static long operacoes;
     static double nanoToMilli = 1.0/1_000_000;
 
-// system.nanotime
-
     /**
      * Código de teste 1. Este método...
      * @param vetor Vetor com dados para teste.
@@ -43,6 +41,7 @@ public class App {
     static int codigo1(int[] vetor) {
         int resposta = 0;
         for (int i = 0; i < vetor.length; i += 2) {
+            operacoes++;
             resposta += vetor[i]%2;
         }
         return resposta;
@@ -57,6 +56,7 @@ public class App {
         int contador = 0;
         for (int k = (vetor.length - 1); k > 0; k /= 2) {
             for (int i = 0; i <= k; i++) {
+                operacoes++;
                 contador++;
             }
 
@@ -72,6 +72,7 @@ public class App {
         for (int i = 0; i < vetor.length - 1; i++) {
             int menor = i;
             for (int j = i + 1; j < vetor.length; j++) {
+                operacoes++;
                 if (vetor[j] < vetor[menor])
                     menor = j;
             }
@@ -87,6 +88,7 @@ public class App {
      * @return Um inteiro que significa...
      */
     static int codigo4(int n) {
+        operacoes++;
         if (n <= 2)
             return 1;
         else
@@ -107,6 +109,45 @@ public class App {
         
     }
     public static void main(String[] args) {
+        // for (int i = 0; i < tamanhosTesteGrande.length; i++){
+        //     operacoes = 0;
+        //     int[] vetor = gerarVetor(tamanhosTesteGrande[i]);
+        //     int tamanho = tamanhosTesteGrande[i];
+        //     long inicio = System.nanoTime();
+        //     codigo1(vetor);
+        //     long fim = System.nanoTime();
+        //     double tempo = ((fim - inicio) * nanoToMilli);
+        //     System.out.printf("Tamanho: %11d | Operções: %2d | Tempo: %.4f\n", tamanho, operacoes, tempo);
+        // }
+        // for (int i = 0; i < tamanhosTesteGrande.length; i++){
+        //     operacoes = 0;
+        //     int[] vetor = gerarVetor(tamanhosTesteGrande[i]);
+        //     int tamanho = tamanhosTesteGrande[i];
+        //     long inicio = System.nanoTime();
+        //     codigo2(vetor);
+        //     long fim = System.nanoTime();
+        //     double tempo = ((fim - inicio) * nanoToMilli);
+        //     System.out.printf("Tamanho: %11d | Operções: %2d | Tempo: %.4f\n", tamanho, operacoes, tempo);
+        // }
+        for (int i = 0; i < tamanhosTesteMedio.length; i++){
+            operacoes = 0;
+            int[] vetor = gerarVetor(tamanhosTesteGrande[i]);
+            int tamanho = tamanhosTesteMedio[i];
+            long inicio = System.nanoTime();
+            codigo3(vetor);
+            long fim = System.nanoTime();
+            double tempo = ((fim - inicio) * nanoToMilli);
+            System.out.printf("Tamanho: %11d | Operções: %2d | Tempo: %.4f\n", tamanho, operacoes, tempo);
+        }
+        for (int i = 0; i < tamanhosTestePequeno.length; i++){
+            operacoes = 0;
+            int tamanho = tamanhosTestePequeno[i];
+            long inicio = System.nanoTime();
+            codigo4(tamanho);
+            long fim = System.nanoTime();
+            double tempo = ((fim - inicio) * nanoToMilli);
+            System.out.printf("Tamanho: %11d | Operções: %2d | Tempo: %.4f\n", tamanho, operacoes, tempo);
+        }
         
     }
 }
