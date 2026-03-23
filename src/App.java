@@ -27,8 +27,8 @@ import java.util.Random;
 
 public class App {
     static final int[] tamanhosTesteGrande =  { 31_250_000, 62_500_000, 125_000_000, 250_000_000, 500_000_000 };
-    static final int[] tamanhosTesteMedio =   {     12_500,     25_000,      50_000,     100_000,     200_000 };
-    static final int[] tamanhosTestePequeno = {          3,          6,          12,          24,          48 };
+    static final int[] tamanhosTesteMedio =   { 12_500, 25_000, 50_000, 100_000, 200_000 };
+    static final int[] tamanhosTestePequeno = { 3, 6, 12,  24,  48 };
     static Random aleatorio = new Random(42);
     static long operacoes;
     static double nanoToMilli = 1.0/1_000_000;
@@ -109,35 +109,35 @@ public class App {
         
     }
     public static void main(String[] args) {
-        // for (int i = 0; i < tamanhosTesteGrande.length; i++){
-        //     operacoes = 0;
-        //     int[] vetor = gerarVetor(tamanhosTesteGrande[i]);
-        //     int tamanho = tamanhosTesteGrande[i];
-        //     long inicio = System.nanoTime();
-        //     codigo1(vetor);
-        //     long fim = System.nanoTime();
-        //     double tempo = ((fim - inicio) * nanoToMilli);
-        //     System.out.printf("Tamanho: %11d | Operções: %2d | Tempo: %.4f\n", tamanho, operacoes, tempo);
-        // }
-        // for (int i = 0; i < tamanhosTesteGrande.length; i++){
-        //     operacoes = 0;
-        //     int[] vetor = gerarVetor(tamanhosTesteGrande[i]);
-        //     int tamanho = tamanhosTesteGrande[i];
-        //     long inicio = System.nanoTime();
-        //     codigo2(vetor);
-        //     long fim = System.nanoTime();
-        //     double tempo = ((fim - inicio) * nanoToMilli);
-        //     System.out.printf("Tamanho: %11d | Operções: %2d | Tempo: %.4f\n", tamanho, operacoes, tempo);
-        // }
-        for (int i = 0; i < tamanhosTesteMedio.length; i++){
+        for (int i = 0; i < tamanhosTesteGrande.length; i++){
             operacoes = 0;
             int[] vetor = gerarVetor(tamanhosTesteGrande[i]);
+            int tamanho = tamanhosTesteGrande[i];
+            long inicio = System.nanoTime();
+            codigo1(vetor);
+            long fim = System.nanoTime();
+            double tempo = ((fim - inicio) * nanoToMilli);
+            System.out.printf("Operação 1 - Tamanho: %11d | Operções: %2d | Tempo: %.4f\n", tamanho, operacoes, tempo);
+        }
+        for (int i = 0; i < tamanhosTesteGrande.length; i++){
+            operacoes = 0;
+            int[] vetor = gerarVetor(tamanhosTesteGrande[i]);
+            int tamanho = tamanhosTesteGrande[i];
+            long inicio = System.nanoTime();
+            codigo2(vetor);
+            long fim = System.nanoTime();
+            double tempo = ((fim - inicio) * nanoToMilli);
+            System.out.printf("Operação 2 - Tamanho: %11d | Operções: %2d | Tempo: %.4f\n", tamanho, operacoes, tempo);
+        }
+        for (int i = 0; i < tamanhosTesteMedio.length; i++){
+            operacoes = 0;
+            int[] vetor = gerarVetor(tamanhosTesteMedio[i]);
             int tamanho = tamanhosTesteMedio[i];
             long inicio = System.nanoTime();
             codigo3(vetor);
             long fim = System.nanoTime();
             double tempo = ((fim - inicio) * nanoToMilli);
-            System.out.printf("Tamanho: %11d | Operções: %2d | Tempo: %.4f\n", tamanho, operacoes, tempo);
+            System.out.printf(" Operação 3 - Tamanho: %11d | Operções: %2d | Tempo: %.4f\n", tamanho, operacoes, tempo);
         }
         for (int i = 0; i < tamanhosTestePequeno.length; i++){
             operacoes = 0;
@@ -146,7 +146,7 @@ public class App {
             codigo4(tamanho);
             long fim = System.nanoTime();
             double tempo = ((fim - inicio) * nanoToMilli);
-            System.out.printf("Tamanho: %11d | Operções: %2d | Tempo: %.4f\n", tamanho, operacoes, tempo);
+            System.out.printf("Operação 4 - Tamanho: %11d | Operções: %2d | Tempo: %.4f\n", tamanho, operacoes, tempo);
         }
         
     }
